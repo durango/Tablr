@@ -4,7 +4,7 @@ $:.unshift lib unless $:.include?(lib)
 
 Gem::Specification.new do |s|
   s.name        = 'tablr'
-  s.version     = '0.1'
+  s.version     = '0.2'
   s.summary     = "Tables in your console in Ruby"
   s.description = "Create tables easily with Tablr in your console."
   s.authors     = ["Daniel Durante"]

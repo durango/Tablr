@@ -1,6 +1,6 @@
 class Tablr
   attr_accessor :columns
-  
+
   def initialize(options = {})
     @columns            ||= TablrSpace::OrderedHash.auto
     @row_data           ||= TablrSpace::OrderedHash.new
@@ -12,7 +12,7 @@ class Tablr
 
   # Add columns
   def columns(columns)
-    Array(columns).each { |v| @columns[v] = { :length => v.length, :rows => [] } }
+    Array(columns).each { |v| @columns[v] = { :length => v.gsub(/\e\[(\d+)m/, '').length, :rows => [] } }
   end
   alias_method :column, :columns
   alias_method :add_column, :columns
@@ -107,6 +107,6 @@ EOL
   end
 
   def str_length(key, length, padding=1)
-    (length-(key.length)-padding).abs
+    (length-(key.gsub(/\e\[(\d+)m/, '').length)-padding).abs
   end
 end
